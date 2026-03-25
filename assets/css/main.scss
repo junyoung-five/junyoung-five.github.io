@@ -4,11 +4,12 @@
 @import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}";
 @import "minimal-mistakes";
 
-// Ensure all nav items are visible
-.greedy-nav .visible-links {
-  overflow: visible;
+// Make site title narrower to give nav links more space
+.greedy-nav .site-title {
+  max-width: 120px;
 }
 
-.greedy-nav .visible-links li {
-  flex-shrink: 0;
+// Reduce nav link padding for more room
+.greedy-nav .visible-links a {
+  padding: 0 0.6em;
 }
