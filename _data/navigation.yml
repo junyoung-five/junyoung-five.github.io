@@ -21,3 +21,7 @@ study:
         url: /study/mathematics/
       - title: "Embedded Systems"
         url: /study/embedded-systems/
+  - title: "Mathematics"
+    children:
+      - title: "Groove Joint Modeling"
+        url: /study/mathematics/groove-joint-modeling/
