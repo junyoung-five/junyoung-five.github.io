@@ -27,6 +27,9 @@ Groove Joint의 모델링 방법 개발 및 그에 따른 Kinematics 검증을 �
 
 ### Constraint Equation (Position)
 
+<details open markdown="1">
+<summary>상세 내용</summary>
+
 $$\Phi_G(\mathbf{q}_i(t)) = \hat{\mathbf{n}}(s^*(t))^\top \cdot \left( \mathbf{p}(t) - \mathbf{C}(s^*(t)) \right) = 0$$
 
 - $\mathbf{q}_i(t) = \begin{bmatrix} x_i(t) \\ y_i(t) \\ \phi_i(t) \end{bmatrix}$ : 평면에서 강체의 상태 정의를 위한 일반화 좌표
@@ -57,9 +60,14 @@ $$\hat{\mathbf{n}}(s^*(t)) = \frac{1}{\|\mathbf{C}'(s^*(t))\|} \begin{bmatrix} -
 
 **물리적 의미**: 조인트 점 $\mathbf{p}$가 레일 위 최근접점 $\mathbf{C}(s^*)$로부터 법선 방향으로 떨어져 있지 않다 $\Leftrightarrow$ 점이 곡선 위에 존재한다.
 
+</details>
+
 ---
 
 ### Jacobian (Velocity Equation)
+
+<details open markdown="1">
+<summary>상세 내용</summary>
 
 $$\mathbf{J}_G = \frac{\partial \Phi_G}{\partial \mathbf{q}} = \begin{bmatrix} \dfrac{\partial \Phi_G}{\partial \mathbf{r}_i} & \dfrac{\partial \Phi_G}{\partial \phi_i} \end{bmatrix}$$
 
@@ -85,11 +93,15 @@ $$A = 0, \quad B = 0 \quad \Rightarrow \quad \frac{\partial \Phi_G}{\partial s^*
 
 #### Jacobian 유도
 
-- $\frac{\partial \Phi_G}{\partial \mathbf{r}_i} = \hat{\mathbf{n}}(s^*)^\top$ ($\because \frac{\partial \mathbf{p}}{\partial \mathbf{r}_i} = \mathbf{I}_{2 \times 2}$)
+- 위치에 대한 편미분:
+
+$$\frac{\partial \Phi_G}{\partial \mathbf{r}_i} = \hat{\mathbf{n}}(s^*)^\top \quad \left(\because \ \frac{\partial \mathbf{p}}{\partial \mathbf{r}_i} = \mathbf{I}_{2 \times 2}\right)$$
 
 - $\frac{\partial \mathbf{R}(\phi_i)}{\partial \phi_i} = \mathbf{E} \, \mathbf{R}(\phi_i)$, where $\mathbf{E} = \begin{bmatrix} 0 & -1 \\ 1 & 0 \end{bmatrix}$ (90도 회전 행렬)
 
-- $\bar{\mathbf{s}}_i = \mathbf{R}(\phi_i) \, \mathbf{s}^{(i,j)}_{\text{local}}$
+- 회전된 body-fixed 벡터:
+
+$$\bar{\mathbf{s}}_i = \mathbf{R}(\phi_i) \, \mathbf{s}^{(i,j)}_{\text{local}}$$
 
 - $\frac{\partial \Phi_G}{\partial \phi_i} = \hat{\mathbf{n}}(s^*)^\top \, \mathbf{E} \, \bar{\mathbf{s}}_i$
 
@@ -101,9 +113,14 @@ $$\mathbf{J}_G(t) = \begin{bmatrix} \hat{n}_x(t) & \hat{n}_y(t) & \hat{\mathbf{n
 
 $$\frac{d \Phi_G}{d t} = \mathbf{J}_G \, \dot{\mathbf{q}} = \hat{\mathbf{n}}(s^*)^\top \dot{\mathbf{p}} = 0$$
 
+</details>
+
 ---
 
 ### Acceleration Equation
+
+<details open markdown="1">
+<summary>상세 내용</summary>
 
 $$\ddot{\mathbf{p}} = \ddot{\mathbf{r}}_i + \alpha_i \, \mathbf{E} \, \bar{\mathbf{s}}_i - \omega_i^2 \, \bar{\mathbf{s}}_i$$
 
@@ -118,6 +135,8 @@ $$\gamma_G = \underbrace{\hat{\mathbf{n}}(s^*)^\top \left( -\omega_i^2 \, \bar{\
 where 곡률:
 
 $$\kappa(s^*) = \frac{C'_x \, C''_y - C'_y \, C''_x}{\left( C'^2_x + C'^2_y \right)^{3/2}}$$
+
+</details>
 
 ---
 
@@ -138,6 +157,9 @@ $$\kappa(s^*) = \frac{C'_x \, C''_y - C'_y \, C''_x}{\left( C'^2_x + C'^2_y \rig
 
 ### 곡선 정의: B-Spline 매개변수화
 
+<details open markdown="1">
+<summary>상세 내용</summary>
+
 CubicSpline 기반은 과도하게 많은 설계 변수가 필요 → B-Spline으로 교체.
 
 $$\mathbf{C}(s) = \sum_{i=0}^{n} N_{i,p}(s) \cdot P_i$$
@@ -148,7 +170,12 @@ $$\mathbf{C}(s) = \sum_{i=0}^{n} N_{i,p}(s) \cdot P_i$$
   - knot 개수 = 제어점 수 + 차수 + 1
   - Clamped: 양 끝 $p+1$번 반복 → 곡선이 첫/끝 제어점을 정확히 통과
 
+</details>
+
 ### 최적 설계 정식화
+
+<details open markdown="1">
+<summary>상세 내용</summary>
 
 **목적함수:**
 
@@ -176,7 +203,12 @@ $$\mathbf{x} = \Big[\underbrace{L_1,\; \theta_0,\; L_2,\; L_3,\; \beta,\; \varph
 | Rail 공간 범위 | J0 중심 500x500mm 경계 내 |
 | J0 위치 고정 | $\mathbf{p}_{J0} = \mathbf{p}_{J0}^{\,ref}$ |
 
+</details>
+
 ### 최적화 전략 (3-Stage)
+
+<details open markdown="1">
+<summary>상세 내용</summary>
 
 | Stage | Method | 대상 | 목적 |
 |:---|:---|:---|:---|
@@ -184,7 +216,12 @@ $$\mathbf{x} = \Big[\underbrace{L_1,\; \theta_0,\; L_2,\; L_3,\; \beta,\; \varph
 | 2 | CMA-ES | 전체 24개 | 고차원 전역 탐색 |
 | 3 | Nelder-Mead | 전체 24개 | CMA-ES 결과 기반 로컬 미세 조정 |
 
+</details>
+
 ### 후처리 (Refinement)
+
+<details open markdown="1">
+<summary>상세 내용</summary>
 
 **Pass-1: E.E + Mechanism Smoothing**
 
@@ -202,6 +239,8 @@ $$f(\mathbf{x}) = w_{ee} \cdot \text{std}(\kappa_{EE}) + w_{rail} \cdot \text{st
 $$f(\mathbf{c}) = \text{mean}(\text{deviation}^2) + w_{fair} \cdot \text{std}(\kappa_{rail})$$
 
 기구 파라미터(조인트 위치)는 고정, rail 곡선만 독립적으로 smoothing.
+
+</details>
 
 ---
 
