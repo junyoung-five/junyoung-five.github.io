@@ -2,7 +2,8 @@
 title: "Parallel SCARA"
 excerpt: "2-DoF Parallel 5-Bar SCARA Robot — Trajectory Planning, Inverse Kinematics, Motor Control 통합 시스템"
 header:
-  teaser: /assets/images/default-teaser.png
+  image: /assets/images/projects/parallel-scara.png
+  teaser: /assets/images/projects/parallel-scara.png
 tags:
   - Robotics
   - Control
