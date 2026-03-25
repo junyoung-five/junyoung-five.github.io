@@ -10,7 +10,8 @@ header:
 excerpt: "진행한 프로젝트들을 정리합니다."
 
 feature_row:
-  - title: "Parallel SCARA"
+  - image_path: /assets/images/projects/parallel-scara.png
+    title: "Parallel SCARA"
     excerpt: "2-DoF Parallel 5-Bar SCARA Robot — Grobner Basis 기반 해석적 역기구학, 궤적 계획, CAN-bus 모터 제어 통합 시스템"
     url: /projects/parallel-scara/
     btn_label: "자세히 보기"
