@@ -23,6 +23,12 @@ author:
       icon: "fas fa-fw fa-envelope"
       url: "mailto:john.jy.oh@gmail.com"
 
+# Collections
+collections:
+  projects:
+    output: true
+    permalink: /projects/:path/
+
 # Reading Files
 encoding: "utf-8"
 include:
@@ -73,3 +79,11 @@ defaults:
     values:
       layout: single
       author_profile: true
+  # _projects
+  - scope:
+      path: ""
+      type: projects
+    values:
+      layout: single
+      author_profile: true
+      share: false
