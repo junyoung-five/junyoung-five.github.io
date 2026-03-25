@@ -1,0 +1,14 @@
+---
+---
+
+@import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}";
+@import "minimal-mistakes";
+
+// Ensure all nav items are visible
+.greedy-nav .visible-links {
+  overflow: visible;
+}
+
+.greedy-nav .visible-links li {
+  flex-shrink: 0;
+}
