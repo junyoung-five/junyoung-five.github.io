@@ -31,14 +31,9 @@ html {
   }
 }
 
-// Move TOC from right side to left side of content area
-.sidebar__right.sticky {
-  @media (min-width: 64em) {
-    float: left !important;
-    width: 180px !important;
-    margin-left: 0 !important;
-    margin-right: 1em !important;
-  }
+// Hide the original right-side TOC (now rendered in left sidebar)
+.sidebar__right {
+  display: none !important;
 }
 
 // Reclaim right padding that was reserved for the right TOC
