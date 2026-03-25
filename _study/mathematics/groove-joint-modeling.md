@@ -1,6 +1,5 @@
 ---
 title: "Groove Joint Modeling"
-permalink: /study/mathematics/groove-joint-modeling/
 layout: single
 author_profile: true
 sidebar:

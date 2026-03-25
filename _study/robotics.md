@@ -1,6 +1,5 @@
 ---
 title: "Robotics"
-permalink: /study/robotics/
 layout: single
 author_profile: true
 sidebar:
@@ -9,7 +8,7 @@ sidebar:
 
 로보틱스 관련 공부 내용을 정리합니다.
 
-<!-- 예시:
+ 예시:
 ## Kinematics
 - [Forward Kinematics](/study/robotics/forward-kinematics/)
 - [Inverse Kinematics](/study/robotics/inverse-kinematics/)
@@ -19,4 +18,4 @@ sidebar:
 
 ## Dynamics
 - [Lagrangian Dynamics](/study/robotics/lagrangian-dynamics/)
--->
+

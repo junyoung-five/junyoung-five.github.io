@@ -1,6 +1,5 @@
 ---
 title: "Embedded Systems"
-permalink: /study/embedded-systems/
 layout: single
 author_profile: true
 sidebar:
@@ -9,7 +8,7 @@ sidebar:
 
 임베디드 시스템 관련 공부 내용을 정리합니다.
 
-<!-- 예시:
+예시:
 ## MCU
 - [STM32 시작하기](/study/embedded-systems/stm32-intro/)
 - [ESP32 통신](/study/embedded-systems/esp32-comm/)
@@ -20,4 +19,4 @@ sidebar:
 
 ## PCB Design
 - [PCB 설계 기초](/study/embedded-systems/pcb-basics/)
--->
+

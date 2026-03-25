@@ -1,6 +1,5 @@
 ---
 title: "Control Theory"
-permalink: /study/control-theory/
 layout: single
 author_profile: true
 sidebar:
@@ -9,7 +8,7 @@ sidebar:
 
 제어 이론 관련 공부 내용을 정리합니다.
 
-<!-- 예시:
+ 예시:
 ## PID Control
 - [PID 제어 기초 정리](/study/control-theory/pid-basics/)
 
@@ -19,4 +18,4 @@ sidebar:
 
 ## State Space
 - [상태 공간 표현](/study/control-theory/state-space/)
--->
+

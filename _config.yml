@@ -28,6 +28,9 @@ collections:
   projects:
     output: true
     permalink: /projects/:path/
+  study:
+    output: true
+    permalink: /study/:path/
 
 # Reading Files
 encoding: "utf-8"
@@ -87,3 +90,12 @@ defaults:
       layout: single
       author_profile: true
       share: false
+  # _study
+  - scope:
+      path: ""
+      type: study
+    values:
+      layout: single
+      author_profile: true
+      sidebar:
+        nav: "study"
