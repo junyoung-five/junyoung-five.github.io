@@ -1,8 +1,25 @@
 ---
 title: "Projects"
 permalink: /projects/
-layout: collection
-collection: projects
-author_profile: true
-entries_layout: grid
+layout: splash
+author_profile: false
+header:
+  overlay_color: "#333"
+  overlay_filter: "0.3"
+  overlay_image: ""
+excerpt: "진행한 프로젝트들을 정리합니다."
+
+feature_row:
+  - title: "Parallel SCARA"
+    excerpt: "2-DoF Parallel 5-Bar SCARA Robot — Grobner Basis 기반 해석적 역기구학, 궤적 계획, CAN-bus 모터 제어 통합 시스템"
+    url: /projects/parallel-scara/
+    btn_label: "자세히 보기"
+    btn_class: "btn--primary"
+  - title: "Sample Project"
+    excerpt: "프로젝트 설명을 여기에 작성합니다."
+    url: /projects/sample-project/
+    btn_label: "자세히 보기"
+    btn_class: "btn--primary"
 ---
+
+{% include feature_row %}
