@@ -25,6 +25,8 @@ author:
 
 # Reading Files
 encoding: "utf-8"
+include:
+  - _pages
 
 # Build settings
 markdown: kramdown
