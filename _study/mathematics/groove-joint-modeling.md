@@ -28,7 +28,7 @@ Groove Joint의 모델링 방법 개발 및 그에 따른 Kinematics 검증을 �
 ### Constraint Equation (Position)
 
 <details open markdown="1">
-<summary>상세 내용</summary>
+<summary>구속 방정식 유도 및 변수 정의</summary>
 
 $$\Phi_G(\mathbf{q}_i(t)) = \hat{\mathbf{n}}(s^*(t))^\top \cdot \left( \mathbf{p}(t) - \mathbf{C}(s^*(t)) \right) = 0$$
 
@@ -67,7 +67,7 @@ $$\hat{\mathbf{n}}(s^*(t)) = \frac{1}{\|\mathbf{C}'(s^*(t))\|} \begin{bmatrix} -
 ### Jacobian (Velocity Equation)
 
 <details open markdown="1">
-<summary>상세 내용</summary>
+<summary>보정항 소멸 증명 및 Jacobian 유도</summary>
 
 $$\mathbf{J}_G = \frac{\partial \Phi_G}{\partial \mathbf{q}} = \begin{bmatrix} \dfrac{\partial \Phi_G}{\partial \mathbf{r}_i} & \dfrac{\partial \Phi_G}{\partial \phi_i} \end{bmatrix}$$
 
@@ -120,7 +120,7 @@ $$\frac{d \Phi_G}{d t} = \mathbf{J}_G \, \dot{\mathbf{q}} = \hat{\mathbf{n}}(s^*
 ### Acceleration Equation
 
 <details open markdown="1">
-<summary>상세 내용</summary>
+<summary>가속도 구속 및 곡률 보정항</summary>
 
 $$\ddot{\mathbf{p}} = \ddot{\mathbf{r}}_i + \alpha_i \, \mathbf{E} \, \bar{\mathbf{s}}_i - \omega_i^2 \, \bar{\mathbf{s}}_i$$
 
@@ -158,7 +158,7 @@ $$\kappa(s^*) = \frac{C'_x \, C''_y - C'_y \, C''_x}{\left( C'^2_x + C'^2_y \rig
 ### 곡선 정의: B-Spline 매개변수화
 
 <details open markdown="1">
-<summary>상세 내용</summary>
+<summary>B-Spline 정의 및 파라미터 설명</summary>
 
 CubicSpline 기반은 과도하게 많은 설계 변수가 필요 → B-Spline으로 교체.
 
@@ -175,7 +175,7 @@ $$\mathbf{C}(s) = \sum_{i=0}^{n} N_{i,p}(s) \cdot P_i$$
 ### 최적 설계 정식화
 
 <details open markdown="1">
-<summary>상세 내용</summary>
+<summary>목적함수, 설계변수, 제약조건</summary>
 
 **목적함수:**
 
@@ -208,7 +208,7 @@ $$\mathbf{x} = \Big[\underbrace{L_1,\; \theta_0,\; L_2,\; L_3,\; \beta,\; \varph
 ### 최적화 전략 (3-Stage)
 
 <details open markdown="1">
-<summary>상세 내용</summary>
+<summary>3단계 최적화 파이프라인</summary>
 
 | Stage | Method | 대상 | 목적 |
 |:---|:---|:---|:---|
@@ -221,7 +221,7 @@ $$\mathbf{x} = \Big[\underbrace{L_1,\; \theta_0,\; L_2,\; L_3,\; \beta,\; \varph
 ### 후처리 (Refinement)
 
 <details open markdown="1">
-<summary>상세 내용</summary>
+<summary>Pass-1 EE Smoothing / Pass-2 Rail Smoothing</summary>
 
 **Pass-1: E.E + Mechanism Smoothing**
 
