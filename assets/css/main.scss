@@ -42,3 +42,28 @@ html {
     padding-right: 0 !important;
   }
 }
+
+// Style sidebar TOC to match nav_list appearance
+.sidebar-toc .toc__menu {
+  padding-left: 0;
+  list-style: none;
+  font-size: 0.75rem;
+
+  a {
+    display: block;
+    padding: 0.125rem 0;
+    color: inherit;
+    text-decoration: none;
+    border-bottom: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  // Nested sub-sections
+  ul {
+    padding-left: 0.75rem;
+    list-style: none;
+  }
+}
