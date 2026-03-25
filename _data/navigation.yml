@@ -7,3 +7,17 @@ main:
     url: /projects/
   - title: "Posts"
     url: /posts/
+  - title: "Study"
+    url: /study/
+
+study:
+  - title: "Study Notes"
+    children:
+      - title: "Control Theory"
+        url: /study/control-theory/
+      - title: "Robotics"
+        url: /study/robotics/
+      - title: "Mathematics"
+        url: /study/mathematics/
+      - title: "Embedded Systems"
+        url: /study/embedded-systems/
