@@ -1,6 +1,6 @@
 ---
 title: "Parallel SCARA"
-excerpt: "2-DoF Parallel 5-Bar SCARA Robot — Grobner Basis IK, Analytical Velocity Profiling, Layered Motor Control"
+excerpt: "2-DoF Parallel 5-Bar SCARA Robot — Gröbner Basis IK, Analytical Velocity Profiling, Layered Motor Control"
 header:
   image: /assets/images/projects/parallel-scara.png
   teaser: /assets/images/projects/parallel-scara.png
@@ -13,7 +13,7 @@ tags:
 
 ## Overview
 
-2-DoF Parallel 5-Bar SCARA Robot의 궤적 계획부터 모터 구동까지 전체 파이프라인을 구현한 프로젝트입니다. **Grobner Basis 기반 해석적 역기구학**으로 관절 궤적과 속도 프로파일을 정밀하게 오프라인 계산하여, 상위 제어기의 복잡도를 최소화하는 것이 핵심 설계 철학입니다.
+2-DoF Parallel 5-Bar SCARA Robot의 궤적 계획부터 모터 구동까지 전체 파이프라인을 구현한 프로젝트입니다. **Gröbner Basis 기반 해석적 역기구학**으로 관절 궤적과 속도 프로파일을 정밀하게 오프라인 계산하여, 상위 제어기의 복잡도를 최소화하는 것이 핵심 설계 철학입니다.
 
 ## System Hierarchy
 
@@ -21,7 +21,7 @@ tags:
 
 ```
 Layer 4 ─ Trajectory Planning (오프라인, Python)
-  Grobner IK + Analytical Jacobian + 5th-order Smoothing
+  Gröbner IK + Analytical Jacobian + 5th-order Smoothing
   → 관절 위치/속도 프로파일 사전 계산
 
 Layer 3 ─ Supervisory Controller (100Hz, Python)
@@ -54,7 +54,7 @@ s(t) = 10t³ - 15t⁴ + 6t⁵
 
 이 함수는 `s(0)=0, s(1)=1`이면서 `s'(0)=s'(1)=0`, `s''(0)=s''(1)=0`을 만족하여, 경로의 시작과 끝에서 속도와 가속도가 자연스럽게 0이 됩니다.
 
-### Step 2. Inverse Kinematics — Grobner Basis
+### Step 2. Inverse Kinematics — Gröbner Basis
 
 각 카테시안 웨이포인트 (x, y)에 대해 해석적 역기구학을 수행합니다.
 
@@ -63,7 +63,7 @@ s(t) = 10t³ - 15t⁴ + 6t⁵
 θ₂ = 2·atan(S₂(x, y))
 ```
 
-S₁, S₂는 5-Bar Parallel Mechanism의 기구학 방정식을 **[Grobner Basis](/study/mathematics/grobner-basis/)**로 풀어 유도된 닫힌 형태(closed-form) 해입니다. 수치 해석 기반 IK 대비 다음과 같은 이점이 있습니다:
+S₁, S₂는 5-Bar Parallel Mechanism의 기구학 방정식을 **[Gröbner Basis](/study/mathematics/grobner-basis/)**로 풀어 유도된 닫힌 형태(closed-form) 해입니다. 수치 해석 기반 IK 대비 다음과 같은 이점이 있습니다:
 
 - 반복 수렴 과정이 없어 계산이 빠르고 결정론적
 - 특이점(singularity) 근방에서도 수치 발산 없이 해를 산출
@@ -71,7 +71,7 @@ S₁, S₂는 5-Bar Parallel Mechanism의 기구학 방정식을 **[Grobner Basi
 
 ### Step 3. Analytical Jacobian → Joint Velocity
 
-Grobner Basis 해(S₁, S₂)를 심볼릭 미분하여 **해석적 야코비안 행렬** J(2×2)를 유도합니다.
+Gröbner Basis 해(S₁, S₂)를 심볼릭 미분하여 **해석적 야코비안 행렬** J(2×2)를 유도합니다.
 
 ```
 J = [∂θ₁/∂x  ∂θ₁/∂y]    (체인 룰: ∂θ/∂x = 2/(1+S²) · ∂S/∂x)
@@ -115,9 +115,9 @@ cmdVel [rad/s]
 
 ## Key Technical Details
 
-### Grobner Basis IK Solver
+### Gröbner Basis IK Solver
 
-5-Bar Parallel Mechanism의 기구학 구속 조건을 다항식 연립방정식으로 표현하고, [Grobner Basis](/study/mathematics/grobner-basis/) 알고리즘으로 소거하여 `θ₁`, `θ₂` 각각에 대한 독립적인 닫힌 형태 해를 유도했습니다. 결과적으로 역기구학이 단순한 함수 호출(`2·atan(S(x,y))`)로 귀결됩니다.
+5-Bar Parallel Mechanism의 기구학 구속 조건을 다항식 연립방정식으로 표현하고, [Gröbner Basis](/study/mathematics/grobner-basis/) 알고리즘으로 소거하여 `θ₁`, `θ₂` 각각에 대한 독립적인 닫힌 형태 해를 유도했습니다. 결과적으로 역기구학이 단순한 함수 호출(`2·atan(S(x,y))`)로 귀결됩니다.
 
 ### Angle Continuity
 
@@ -181,7 +181,7 @@ TMotor AK10-9는 VESC 기반 펌웨어를 내장하고 있으며, 속도 모드�
 | GUI | CustomTkinter |
 | Motor | CubeMars AK10-9 (CAN Bus, VESC Firmware) |
 | Communication | python-can → Linux SocketCAN → USB-CAN Adapter |
-| Math | NumPy, Grobner Basis IK, Analytical Jacobian (CSE Optimized) |
+| Math | NumPy, Gröbner Basis IK, Analytical Jacobian (CSE Optimized) |
 | Simulation | MATLAB (Workspace Analysis, Manipulability Map) |
 | PCB | Custom Carrier Board (KiCad, 3 iterations) |
 
