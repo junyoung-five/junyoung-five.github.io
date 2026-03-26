@@ -16,6 +16,11 @@ feature_row:
     url: /projects/parallel-scara/
     btn_label: "자세히 보기"
     btn_class: "btn--primary"
+  - title: "Groove Joint Modeling"
+    excerpt: "Groove Joint 모델링 방법 개발 및 Kinematics 검증, 기구 메커니즘 최적 설계"
+    url: /projects/groove-joint-modeling/
+    btn_label: "자세히 보기"
+    btn_class: "btn--primary"
   - title: "Sample Project"
     excerpt: "프로젝트 설명을 여기에 작성합니다."
     url: /projects/sample-project/
