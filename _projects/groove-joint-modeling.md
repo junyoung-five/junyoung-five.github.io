@@ -26,6 +26,8 @@ Groove Joint의 모델링 방법 개발 및 그에 따른 Kinematics 검증을 �
 <details open markdown="1">
 <summary>구속 방정식 유도 및 변수 정의</summary>
 
+$Def \space of \space Constraint \space equation \space for \space Groove \space Joint (Pos \space Eq)​$
+
 $$\Phi_G(\mathbf{q}_i(t)) = \hat{\mathbf{n}}(s^*(t))^\top \cdot \left( \mathbf{p}(t) - \mathbf{C}(s^*(t)) \right) = 0$$
 
 - $\mathbf{q}_i(t) = \begin{bmatrix} x_i(t) \\ y_i(t) \\ \phi_i(t) \end{bmatrix}$ : 평면에서 강체의 상태 정의를 위한 일반화 좌표
@@ -237,11 +239,11 @@ $$\Phi_G(\mathbf{q}_i(t)) = \hat{\mathbf{n}}(s^*(t))^\top \cdot \left( \mathbf{p
 
 ### Kinematics Solver 구속 방정식 체계
 
-| Type | Equation | # of eq |
-|:---|:---|:---|
-| Revolute Joint | $\Phi_R = \mathbf{p}_b(\mathbf{q}) - \mathbf{p}_a(\mathbf{q}) = 0$ | 2 per joint |
-| Groove Joint | $\Phi_G = \hat{\mathbf{n}}(s^*)^\top \cdot (\mathbf{p}(\mathbf{q}) - \mathbf{C}(s^*)) = 0$ | 1 per joint |
-| Driving | $\Phi_D = \varphi_{input} - (\varphi_0 + \theta(t)) = 0$ | 1 |
+| Type           | Equation                                                                                   | # of eq     |
+| :------------- | :----------------------------------------------------------------------------------------- | :---------- |
+| Revolute Joint | $\Phi_R = \mathbf{p}_b(\mathbf{q}) - \mathbf{p}_a(\mathbf{q}) = 0$                         | 2 per joint |
+| Groove Joint   | $\Phi_G = \hat{\mathbf{n}}(s^\ast)^\top \cdot (\mathbf{p}(\mathbf{q}) - \mathbf{C}(s^\ast)) = 0$ | 1 per joint |
+| Driving        | $\Phi_D = \varphi_{input} - (\varphi_0 + \theta(t)) = 0$                                   | 1           |
 
 ## 검증
 
