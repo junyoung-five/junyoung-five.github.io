@@ -2,8 +2,6 @@
 title: "Groove Joint Modeling"
 layout: single
 author_profile: true
-sidebar:
-  nav: "study"
 use_math: true
 toc: true
 toc_sticky: true
@@ -17,13 +15,11 @@ toc_sticky: true
   - Groove Joint란 기본적으로 RP(or PR) joint에서 그 궤적이 곡선으로 변형된 joint를 의미한다.
 - 현재 메커니즘 데이터 생성기에선 R, P Joint만 고려되고 있다.
 
-## 연구 목표
+## 연구 목적
 
 Groove Joint의 모델링 방법 개발 및 그에 따른 Kinematics 검증을 목표로 한다.
 
----
-
-## Groove Joint Modeling
+## 연구 방법
 
 ### Constraint Equation (Position)
 
@@ -140,22 +136,9 @@ $$\kappa(s^*) = \frac{C'_x \, C''_y - C'_y \, C''_x}{\left( C'^2_x + C'^2_y \rig
 
 ---
 
-## Kinematics 검증
+### 기구 메커니즘 최적 설계
 
-솔리드웍스에서 72 step 점에 대하여 J1, J2 조인트의 Pos 값을 추출하여 비교.
-
-<!-- 이미지 추가 예정: groove_solver_vs_solidworks.gif -->
-
-- J1, J2 위치 오차: 소수점 두 자리 수준
-- 속도: 노이즈 존재하지만 경향성 일치 확인
-- 가속도: 유효 숫자 정밀도에 따른 노이즈 증폭으로 비교 불가
-  - 현재 groove joint 수학적 모델링이 Kinematics 해석에 있어 정합성을 보인다고 결론
-
----
-
-## 기구 메커니즘 최적 설계
-
-### 곡선 정의: B-Spline 매개변수화
+#### 곡선 정의: B-Spline 매개변수화
 
 <details open markdown="1">
 <summary>B-Spline 정의 및 파라미터 설명</summary>
@@ -172,7 +155,7 @@ $$\mathbf{C}(s) = \sum_{i=0}^{n} N_{i,p}(s) \cdot P_i$$
 
 </details>
 
-### 최적 설계 정식화
+#### 최적 설계 정식화
 
 <details open markdown="1">
 <summary>목적함수, 설계변수, 제약조건</summary>
@@ -205,7 +188,7 @@ $$\mathbf{x} = \Big[\underbrace{L_1,\; \theta_0,\; L_2,\; L_3,\; \beta,\; \varph
 
 </details>
 
-### 최적화 전략 (3-Stage)
+#### 최적화 전략 (3-Stage)
 
 <details open markdown="1">
 <summary>3단계 최적화 파이프라인</summary>
@@ -218,7 +201,7 @@ $$\mathbf{x} = \Big[\underbrace{L_1,\; \theta_0,\; L_2,\; L_3,\; \beta,\; \varph
 
 </details>
 
-### 후처리 (Refinement)
+#### 후처리 (Refinement)
 
 <details open markdown="1">
 <summary>Pass-1 EE Smoothing / Pass-2 Rail Smoothing</summary>
@@ -242,11 +225,10 @@ $$f(\mathbf{c}) = \text{mean}(\text{deviation}^2) + w_{fair} \cdot \text{std}(\k
 
 </details>
 
----
-
-## 결론
+## 연구 결과
 
 ### Groove Joint 정의
+
 RP, PR 조인트와 같이 두 조인트 간 연결 관계에 있어 링크의 길이가 0이며, 곡선 형태의 레일을 추종하며 움직이는 새로운 조인트 타입.
 
 ### Groove Joint 구속 방정식
@@ -260,6 +242,19 @@ $$\Phi_G(\mathbf{q}_i(t)) = \hat{\mathbf{n}}(s^*(t))^\top \cdot \left( \mathbf{p
 | Revolute Joint | $\Phi_R = \mathbf{p}_b(\mathbf{q}) - \mathbf{p}_a(\mathbf{q}) = 0$ | 2 per joint |
 | Groove Joint | $\Phi_G = \hat{\mathbf{n}}(s^*)^\top \cdot (\mathbf{p}(\mathbf{q}) - \mathbf{C}(s^*)) = 0$ | 1 per joint |
 | Driving | $\Phi_D = \varphi_{input} - (\varphi_0 + \theta(t)) = 0$ | 1 |
+
+## 검증
+
+솔리드웍스에서 72 step 점에 대하여 J1, J2 조인트의 Pos 값을 추출하여 비교.
+
+<!-- 이미지 추가 예정: groove_solver_vs_solidworks.gif -->
+
+- J1, J2 위치 오차: 소수점 두 자리 수준
+- 속도: 노이즈 존재하지만 경향성 일치 확인
+- 가속도: 유효 숫자 정밀도에 따른 노이즈 증폭으로 비교 불가
+  - 현재 groove joint 수학적 모델링이 Kinematics 해석에 있어 정합성을 보인다고 결론
+
+## 결론
 
 <!--
 TODO: 이미지 추가

@@ -1,14 +1,11 @@
 ---
 title: "Embedded Systems"
+page_type: landing
 layout: single
 author_profile: true
 sidebar:
   nav: "study"
 ---
-
-임베디드 시스템 관련 공부 내용을 정리합니다.
-
-예시:
 ## MCU
 - [STM32 시작하기](/study/embedded-systems/stm32-intro/)
 - [ESP32 통신](/study/embedded-systems/esp32-comm/)
